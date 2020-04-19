@@ -7,8 +7,15 @@ import javax.swing.JOptionPane;
 public class Files {
     public String location;
 
+    /**
+     * Save file in following format:
+     * - Line 1 = x values
+     * - Line 2 = y values
+     * - Line 3 = color values
+     * - Line 4 = width values
+     */
     public void saveFile(String paramString) {
-        this.location = "/Users/dannydjrs/Desktop/Java/" + paramString + ".txt";
+        this.location = paramString + ".txt";
         try {
             BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(this.location));
             byte b;
@@ -38,28 +45,29 @@ public class Files {
     }
 
     public void openFile(String paramString) {
-    this.location = "/Users/dannydjrs/Desktop/Java/" + paramString + ".txt";
-    try {
-    BufferedReader bufferedReader = new BufferedReader(new FileReader(this.location));
-    String str1 = bufferedReader.readLine();
-    String str2 = bufferedReader.readLine();
-    String str3 = bufferedReader.readLine();
-    String str4 = bufferedReader.readLine();
-    bufferedReader.close();
-    String[] arrayOfString1 = str1.split(" ");
-    String[] arrayOfString2 = str2.split(" ");
-    String[] arrayOfString3 = str3.split(" ");
-    String[] arrayOfString4 = str4.split(" ");
-    for (String str : arrayOfString1)
-    Draw.x.add(str);
-    for (String str : arrayOfString2)
-    Draw.y.add(str);
-    for (String str : arrayOfString3)
-    Draw.cols.add(str);
-    for (String str : arrayOfString4)
-    Draw.w.add(str);
-    } catch (Exception exception) {
-    JOptionPane.showMessageDialog(null, "There was an error");
-    }
+        this.location = paramString + ".txt";
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader(this.location));
+            String str1 = bufferedReader.readLine();
+            String str2 = bufferedReader.readLine();
+            String str3 = bufferedReader.readLine();
+            String str4 = bufferedReader.readLine();
+            bufferedReader.close();
+
+            String[] arrayOfString1 = str1.split(" ");
+            String[] arrayOfString2 = str2.split(" ");
+            String[] arrayOfString3 = str3.split(" ");
+            String[] arrayOfString4 = str4.split(" ");
+            for (String str : arrayOfString1)
+                Draw.x.add(str);
+            for (String str : arrayOfString2)
+                Draw.y.add(str);
+            for (String str : arrayOfString3)
+                Draw.cols.add(str);
+            for (String str : arrayOfString4)
+                Draw.w.add(str);
+        } catch (Exception exception) {
+            JOptionPane.showMessageDialog(null, "There was an error");
+        }
     }
 }

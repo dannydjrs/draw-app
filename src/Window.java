@@ -22,8 +22,9 @@ public class Window extends JFrame {
     private Buttons pink;
     private Buttons grey;
     private Buttons cyan;
-
     private Buttons chooser;
+    private Buttons[] colorButtons;
+
     public OptionsPanel optionpanel;
     private Options undo;
     private ButtonPanel bpanel;
@@ -32,16 +33,16 @@ public class Window extends JFrame {
     public static int WIDTH = 1300;
     public static int HEIGHT = 700;
 
-    private Draw2 draw;
-
     public Window() {
         super("Draw");
         setSize(WIDTH, HEIGHT);
         this.panel = new Draw();
         this.panel.setBackground(Color.WHITE);
+
         this.bpanel = new ButtonPanel();
         this.optionpanel = new OptionsPanel();
         this.slider = new Slider();
+
         SHandler sHandler = new SHandler();
         this.slider.addChangeListener(sHandler);
         this.slider.setSize(WIDTH * 3 / 5, HEIGHT * 1 / 5);
